@@ -18,8 +18,8 @@ public class CarController {
 
     @GetMapping("/cars")
     public String index(@RequestParam(defaultValue="5") Integer count, ModelMap model) {
-        CarServiceImpl carServiceImpl = new CarServiceImpl();
-        model.addAttribute("cars", carServiceImpl.cars(count));
+        //CarServiceImpl carServiceImpl = new CarServiceImpl();
+        model.addAttribute("cars", new CarServiceImpl().cars(count));
         return "cars";
     }
 }
