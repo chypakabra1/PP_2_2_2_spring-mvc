@@ -16,10 +16,16 @@ import java.util.List;
 //@RequestMapping("/cars")
 public class CarController {
 
+    private CarServiceImpl carServiceImpl;
+
+    public CarController(CarServiceImpl carServiceImpl) {
+        this.carServiceImpl = carServiceImpl;
+    }
+    
     @GetMapping("/cars")
     public String index(@RequestParam(defaultValue="5") Integer count, ModelMap model) {
         //CarServiceImpl carServiceImpl = new CarServiceImpl();
-        model.addAttribute("cars", new CarServiceImpl().cars(count));
+        model.addAttribute("cars", carServiceImpl.cars(count));
         return "cars";
     }
 }
